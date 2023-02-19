@@ -21,6 +21,51 @@ def find_max(vec: list, max=0):
         max = find_max(vec[1::])
         return vec[0] if vec[0] > max else max
     
+def binary_search(arr: list, item, high, low=0):
+    # TODO: come back to this!
+
+    # high = len(arr) - 1
+    mid = (high + low) // 2
+    guess = arr[mid]
+
+
+    if low <= high:
+
+
+        print("guess: ", guess)
+
+
+        if not arr:
+            return None 
+        
+        if guess == item:
+            return guess
+
+        if guess > item:
+            return binary_search(arr[1:], item, mid -1)
+        
+        if guess < item:
+            return binary_search(arr[1:], item, mid+1)
+
+    elif guess == item:
+        return guess
+
+    else:
+        return None
+
+def quicksort(arr: list):
+
+    if len(arr) < 2:
+        return arr
+    
+    pivot = arr[0]
+
+    left = [i for i in arr[1:] if i <= pivot]
+    right = [i for i in arr[1:] if i > pivot]
+
+    return quicksort(left) + [pivot] + quicksort(right)
+
+    
 
 x = [2, 10, 12, 4, 6]
 
@@ -30,4 +75,8 @@ print(arr_sum(x))
 print(count_items(x))
 
 print(find_max(x))
-    
+
+print(binary_search(x, 6, len(x) - 1))
+
+print(quicksort(x))
+
